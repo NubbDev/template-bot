@@ -38,7 +38,7 @@ const client: ClientType = {
     config: {
         owners: [process.env.NUBBID as string],
         prefix: "!",
-        devGuild: "851102546470371338"
+        devGuild: ""
     },
     paths: {
         slashcommands: new Map(),
