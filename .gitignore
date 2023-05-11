@@ -1,0 +1,6 @@
+.DS_Store*
+build
+.history
+.env
+yarn-error.log
+node_modules

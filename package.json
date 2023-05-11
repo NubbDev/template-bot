@@ -1,0 +1,24 @@
+{
+  "name": "bot-template",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node build/index.js",
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "watch": "nodemon src/index.ts"
+  },
+  "dependencies": {
+    "ascii-table3": "^0.8.2",
+    "chalk": "^5.2.0",
+    "discord.js": "^14.11.0",
+    "dotenv": "^16.0.3",
+    "hot-esm": "^1.6.0",
+    "pino": "^8.14.1"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}
