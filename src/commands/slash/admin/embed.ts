@@ -63,7 +63,7 @@ export default {
 
                 if (!name || !channel) return
 
-                const embedDir = path.join(__dirname, '..', '..', 'embeds')
+                const embedDir = path.join(__dirname, '..', '..', '..', 'misc', 'embeds')
                 const embeds = (await import(`${embedDir}/${name.toLowerCase()}.json`)).default
                 await channel.send({embeds: embeds.content.embeds, components: embeds.content.components})
                 interaction.reply({content: `Sent **${name}** embed to ${channel}`, ephemeral: true})
@@ -76,7 +76,7 @@ export default {
 const loadChoices: () => Promise<Array<{ name: any; value: any }>> = () => {
     return new Promise(resolve => {
         const choices: { name: any; value: any }[] = []
-        const embedDir = path.join(__dirname, '..', '..', 'embeds')
+        const embedDir = path.join(__dirname, '..', '..', '..', 'misc', 'embeds')
         fs.readdirSync(embedDir).forEach(async file => {
             const embed = (await import(`${embedDir}/${file}`)).default
             choices.push({

@@ -1,0 +1,30 @@
+{
+    "name": "test",
+    "content": {
+        "content": "Hello World",
+        "tts": false,
+        "embeds": [
+            {
+            "id": 186797927,
+            "description": "This is a body test",
+            "fields": [
+                {
+                "id": 275025420,
+                "name": "field",
+                "value": "field value example"
+                }
+            ],
+            "color": 16724787,
+            "title": "Testing Embeds",
+            "footer": {
+                "text": "Footer example"
+            },
+            "author": {
+                "name": "Author Example"
+            }
+            }
+        ],
+        "components": [],
+        "actions": {}
+}
+}

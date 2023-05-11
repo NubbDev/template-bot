@@ -23,11 +23,11 @@ export default (client: ClientType) => {
         .setStyle('unicode-single')
     Promise.allSettled([
         new Promise(async (resolve) => {
-            const dir = path.join(__dirname, '../commands/slash')
+            const dir = path.join(__dirname, '..', 'commands' , 'slash')
             getCommands(dir, client.slashcommands, client.paths.slashcommands, slashTable).then(() => resolve(true))
         }),
         new Promise(async (resolve) => {
-            const dir = path.join(__dirname, '../commands/legacy')
+            const dir = path.join(__dirname, '..', 'commands','legacy')
             getCommands(dir, client.commands, client.paths.commands, cmdTable).then(() => resolve(true))
         }),
         
@@ -37,7 +37,10 @@ export default (client: ClientType) => {
         console.log(cmdTable.toString())
     })
 }
-
+/**
+ * 
+ * @param commands The Array of commands to register to the Discord API
+ */
 const registerCommands = async (commands: Array<CommandType>) => {
     const rest = new REST({ version: '10' }).setToken(process.env.TOKEN as string);
 
@@ -59,6 +62,13 @@ const registerCommands = async (commands: Array<CommandType>) => {
     }
 };
 
+/**
+ * Load the commands from the specified directory to a Map
+ * @param dir The directory to search for commands
+ * @param list The list to add commands to
+ * @param cache The list where the command paths are stored
+ * @param table The table to add rows to
+ */
 const getCommands = async (dir: string, list: Map<string, CommandType>, cache:Map<string, string>, table: AsciiTable3) => {
     fs.readdirSync(dir).forEach(childDir => {
         const cmdFiles = fs.readdirSync(`${dir}/${childDir}`).filter(file => endsWithAny(['.ts', '.js'], file))

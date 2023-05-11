@@ -32,7 +32,7 @@ export default {
             })
         }
 
-        const path = client.paths.commands.get(command.name) as string
+        const path = client.paths.slashcommands.get(command.name) as string
         
         delete require.cache[require.resolve(path)]
         try {

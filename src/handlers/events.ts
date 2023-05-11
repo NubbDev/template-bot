@@ -13,7 +13,7 @@ export default (client: ClientType) => {
         .setStyle('unicode-single')
     Promise.allSettled([
         new Promise((resolve) => {
-            const dir = path.join(__dirname, '../events')
+            const dir = path.join(__dirname, '..', 'events')
             fs.readdirSync(dir).filter(file => endsWithAny(['.ts', '.js'], file)).forEach(file => {
                 const filepath = path.join(dir, file)
                 import(filepath).then(x => {
