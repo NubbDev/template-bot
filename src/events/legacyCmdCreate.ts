@@ -1,3 +1,4 @@
+import { ChannelType } from "discord.js";
 import { EventType } from "../types";
 
 export default {
@@ -7,12 +8,16 @@ export default {
             if (message.author.bot) return;
             if (!message.content.startsWith(client.config.prefix)) return;
             const args = message.content.toLocaleLowerCase().slice(client.config.prefix.length).trim().split(/ +/g);
-            const command = client.commands.get(args[0]);
+            const cmd = args.shift()?.toLowerCase();
+            if (!cmd) return;
+            const command = client.commands.get(cmd);
 
             if (!command) {
                 client.commands.delete(args[0])
                 return
             }
+
+            args.shift();
 
             try {
                 await command.run(client, message, args);
